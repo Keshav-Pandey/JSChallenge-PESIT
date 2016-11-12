@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Snake Game</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/snake.css">
+</head>
+<body>
+  
+<!-- First Container -->
+<div class="container-fluid bg-1 text-center">
+  <div class="canvasStyle" id = 'home'>
+          <h1>Snake Game</h1>
+          <canvas id='mycanvas' width='300' height='300'>
+          </canvas>
+  </div>
+  <div id='startHelpText'>
+    <h3 class="margin" id='helpText'>Start playing I'm hungry!</h3>
+    <button class="btn btn-default" id='btn'>Start</button><br>
+    <img id='happySnake' src='img/happySnake.jpg' width='150' height='180'></img>
+    <img id='sadSnake' src='img/sadSnake.jpg' width='150' height='180'></img>
+
+  </div>
+
+</div>
+      <script src="js/setting.js"></script>
+      <script src="js/draw.js"></script>
+      <script src="js/app1.js"></script>
+</body>
+</html>
+
