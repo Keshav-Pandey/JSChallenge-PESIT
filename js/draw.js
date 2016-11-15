@@ -10,7 +10,11 @@ var drawModule = (function () {
   }
 
 var drawSnakeHead = function(x, y) {
-  //This function should render the head of the snake as a black cell
+    //This function should render the head of the snake as a black cell
+    ctx.fillStyle = 'black';
+    ctx.fillRect(x*snakeCellSize, y*snakeCellSize, snakeCellSize, snakeCellSize);
+    ctx.strokeStyle = 'black';
+    ctx.strokeRect(x*snakeCellSize, y*snakeCellSize, snakeCellSize, snakeCellSize);
   }
 
   //creates pizza at (x,y) co-ordinates inside the canvas
@@ -32,7 +36,7 @@ var drawSnakeHead = function(x, y) {
 
   //initializes the snake array with 4 cells as the size
   var initSnake = function() {
-      var length = 2;
+      var length = 10;
       snake = [];
       for (var i = length-1; i>=0; i--) {
           snake.push({x:i, y:0});
@@ -66,11 +70,26 @@ var drawSnakeHead = function(x, y) {
       } else if(direction == 'down') { 
         snakeY++; }
       
-      // Check boundary conditions
-      
+      if(snakeX==-1 && direction!='right'){
+           snakeX=w/snakeCellSize;
+           direction='left';
+         }
+         if(snakeX>=w/snakeCellSize && direction!='left'){
+           snakeX=-1;
+           direction='right';
+         }
+ 
+         if(snakeY<=-1 && direction!='down'){
+           snakeY=h/snakeCellSize;
+           direction='up';
+         }
+         if(snakeY>=h/snakeCellSize && direction!='up'){
+           snakeY=-1;
+           direction='down';
+         }
 
       //Check for collisions and restart game
-      if (snakeX == -1 || snakeX == w/snakeSize || snakeY == -1 || snakeY == h/snakeSize || checkCollision(snakeX, snakeY, snake)) {
+      if (checkCollision(snakeX, snakeY, snake)) {
           //restart game
           btn.removeAttribute('disabled', true);
           helpText.innerHTML="I just ate myself :( ";
@@ -81,6 +100,7 @@ var drawSnakeHead = function(x, y) {
 
           ctx.clearRect(0,0,w,h);
           gameloop = clearInterval(gameloop);
+          score=0;
 
           return;          
         }

@@ -1,7 +1,7 @@
 //Delare configuration details
 var mycanvas = document.getElementById('mycanvas');
 var ctx = mycanvas.getContext('2d');
-// var snakeCellSize = 10; 
+var snakeCellSize = 10; 
 var w = 300;
 var h = 300;
 var score = 0;

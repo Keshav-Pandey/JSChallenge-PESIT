@@ -12,7 +12,7 @@ btn.addEventListener("click", function(){ drawModule.init();});
         //Change direction of the snake based on arrow keys
         case 37: 
           if (direction != 'right') {
-            direction = 'right';
+            direction = 'left';
           }
 
           break;
